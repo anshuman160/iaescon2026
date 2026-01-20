@@ -11,186 +11,183 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Modern Medical Palette */
-            --primary-blue: #004e92;
-            --secondary-blue: #000428;
-            --medical-teal: #00b4d8;
-            --accent-gold: #ffb703;
-            --soft-bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
+            /* Professional Medical Palette */
+            --primary-blue: #003366; 
+            --medical-teal: #00a8cc; 
+            --accent-gold: #e6b800;  
+            --soft-bg: #f8fbfd;      
+            --text-dark: #2c3e50;
+            --text-muted: #5a6e7f;
+            --card-shadow: 0 10px 30px rgba(0, 51, 102, 0.08);
         }
 
         body {
             font-family: 'Lato', sans-serif;
             color: var(--text-dark);
             background-color: var(--soft-bg);
-            /* Subtle medical background pattern */
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-            background-size: 20px 20px;
-            padding-top: 80px;
+            padding-top: 76px;
         }
 
-        h1, h2, h3, h4, h5, .navbar-brand {
-            font-family: 'Montserrat', sans-serif;
-        }
+        h1, h2, h3, h4, h5, .navbar-brand { font-family: 'Montserrat', sans-serif; }
 
-        /* --- Glassmorphism Navbar --- */
+        /* --- Navbar --- */
         .navbar {
-            background: rgba(0, 78, 146, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             padding: 12px 0;
-            transition: all 0.3s ease;
         }
         .navbar-brand img {
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.8);
-            transition: transform 0.3s;
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
         }
-        .navbar-brand:hover img { transform: rotate(10deg); }
+        .navbar-brand span {
+            color: var(--primary-blue);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-size: 1.4rem;
+        }
         .nav-link {
-            color: rgba(255,255,255,0.9) !important;
-            font-weight: 500;
+            color: var(--text-dark) !important;
+            font-weight: 600;
             margin: 0 12px;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .nav-link::after {
+        .nav-link:hover { color: var(--medical-teal) !important; }
+        .nav-link.active-reg {
+            color: white !important;
+            background: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        /* --- Creative Hero Section --- */
+        .creative-hero {
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            color: white;
+            padding: 100px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .creative-hero::before {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: var(--accent-gold);
-            transition: all 0.3s;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 25%),
+                              radial-gradient(circle at 80% 20%, rgba(0,168,204,0.1) 0%, transparent 30%);
+            pointer-events: none;
         }
-        .nav-link:hover::after {
-            width: 100%;
-            left: 0;
-        }
-        .nav-link:hover { color: var(--accent-gold) !important; }
-        
-        .btn-register-nav {
-            background: linear-gradient(45deg, var(--accent-gold), #ffca3a);
-            color: #000 !important;
-            border-radius: 50px;
-            padding: 10px 28px !important;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4);
-            border: none;
-            transition: transform 0.2s;
-        }
-        .btn-register-nav:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 183, 3, 0.6);
-        }
-
-        /* --- Hero Slider --- */
-        .hero-wrapper {
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 85vh;
-            object-fit: cover;
-        }
-        .carousel-item::after {
-            content: "";
-            position: absolute;
-            top: 0; bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); 
-        }
-        .slider-overlay {
-            position: absolute;
-            bottom: 80px;
-            left: 0; right: 0;
-            text-align: center;
-            z-index: 10;
-        }
-        .btn-hero {
-            background: var(--primary-blue);
-            border: 2px solid white;
-            color: white;
-            padding: 15px 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 78, 146, 0.5);
-        }
-        .btn-hero:hover {
+        .hero-logo-large {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid rgba(255,255,255,0.15);
+            padding: 10px;
             background: white;
-            color: var(--primary-blue);
-            transform: translateY(-3px);
+            object-fit: contain;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
         }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #b3d9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .location-btn {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .location-btn:hover {
+            background: var(--medical-teal);
+            border-color: var(--medical-teal);
+            transform: translateY(-3px);
+            color: white;
+        }
+        .location-icon { font-size: 1.2rem; margin-right: 10px; color: var(--accent-gold); }
 
         /* --- Section Styling --- */
+        .section-padding { padding: 80px 0; }
+        
         .section-header {
             text-align: center;
             margin-bottom: 3.5rem;
             position: relative;
-            padding-bottom: 15px;
-            font-weight: 800;
-            text-transform: uppercase;
+        }
+        .section-header h2 {
+            font-weight: 700;
             color: var(--primary-blue);
+            text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 15px;
         }
         .section-header::after {
             content: '';
+            display: block;
             width: 60px;
             height: 4px;
             background: var(--medical-teal);
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 4px;
-        }
-        .section-subtext {
-            text-align: center;
-            color: var(--text-light);
-            margin-top: -2rem;
-            margin-bottom: 3rem;
-            font-style: italic;
+            margin: 0 auto;
+            border-radius: 2px;
         }
 
-        /* --- Faculty Cards (Modern) --- */
-        .faculty-card {
+        /* --- Cards --- */
+        .faculty-card, .info-box {
             background: white;
-            border-radius: 16px;
-            padding: 30px 20px;
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
-            position: relative;
             overflow: hidden;
+            border-top: 4px solid transparent;
         }
-        .faculty-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--medical-teal));
+        .faculty-card:hover, .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 51, 102, 0.12);
+            border-top-color: var(--medical-teal);
         }
-        .faculty-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        
+        .faculty-card { padding: 30px 15px; text-align: center; }
         .faculty-placeholder-img {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            background: #f0f7fa;
             border-radius: 50%;
             margin: 0 auto 15px;
             display: flex;
@@ -198,25 +195,50 @@
             justify-content: center;
             font-size: 2.2rem;
             color: var(--primary-blue);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
             border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .faculty-name { font-weight: 700; color: var(--primary-blue); margin-bottom: 4px; font-size: 1.05rem; }
-        .faculty-country { color: var(--medical-teal); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+        .faculty-name { font-weight: 700; color: var(--primary-blue); margin-bottom: 5px; font-size: 1.1rem; }
+        .faculty-country { color: var(--medical-teal); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- Fees Table (Clean) --- */
-        .fees-container {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        .info-box { padding: 30px; }
+        .info-icon { font-size: 2rem; color: var(--primary-blue); margin-bottom: 15px; }
+
+        /* --- Attractions Grid --- */
+        .attraction-card {
+            border-radius: 12px;
             overflow: hidden;
-            border: none;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            position: relative;
         }
-        .table-fees { margin-bottom: 0; }
+        .attraction-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .attraction-card:hover .attraction-img { transform: scale(1.1); }
+        .attraction-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        /* --- Tables --- */
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            border: 1px solid #eef2f5;
+        }
         .table-fees thead th {
             background: var(--primary-blue);
             color: white;
-            padding: 20px;
+            padding: 18px;
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.85rem;
@@ -226,101 +248,93 @@
             text-align: center;
         }
         .table-fees tbody td {
-            padding: 16px;
             vertical-align: middle;
             text-align: center;
-            border-bottom: 1px solid #f3f4f6;
+            padding: 15px;
+            border-bottom: 1px solid #f0f4f8;
             color: var(--text-dark);
             font-size: 0.95rem;
         }
         .table-fees tbody tr:last-child td { border-bottom: none; }
-        .table-fees tbody tr:hover { background-color: #f9fafb; }
+        .table-fees tbody tr:hover { background-color: #fcfdfe; }
+        .bg-highlight { background-color: #fff9e6 !important; }
         .fee-category-header {
-            background-color: #eef2ff;
+            background: #eef6fc;
             color: var(--primary-blue);
-            font-weight: 800;
+            font-weight: 700;
             text-align: left !important;
-            padding: 15px 20px;
+            padding: 12px 20px;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
         }
-        .bg-highlight { background-color: #fffbeb !important; }
 
-        /* --- Abstract & Cards --- */
-        .info-box {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            border: 1px solid #eee;
-            height: 100%;
-        }
-        .info-box:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .info-icon { font-size: 3rem; margin-bottom: 20px; background: -webkit-linear-gradient(45deg, var(--primary-blue), var(--medical-teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
         /* --- Payment Section --- */
         .payment-section {
-            background: linear-gradient(160deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
+            background: #fff;
+            border-top: 1px solid #eef2f5;
         }
-        /* Abstract decorative shapes */
-        .payment-section::before {
-            content: '';
-            position: absolute;
-            top: -50px; right: -50px;
-            width: 300px; height: 300px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
+        .payment-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid #eef2f5;
+            padding: 40px;
         }
         .qr-container {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
             display: inline-block;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .instruction-box {
+            background-color: #f0f7fa;
+            border-left: 5px solid var(--medical-teal);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            text-align: left;
         }
         .upload-btn {
-            background: #e11d48;
+            background: linear-gradient(135deg, #004e92, #003366);
             color: white;
-            border: none;
+            padding: 16px 50px;
             border-radius: 50px;
-            padding: 18px 45px;
-            font-size: 1.2rem;
-            font-weight: 700;
             text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
             display: inline-block;
-            margin-top: 30px;
+            box-shadow: 0 5px 20px rgba(0, 51, 102, 0.3);
             transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+            border: none;
         }
-        .upload-btn:hover {
-            background: #be123c;
+        .upload-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.4);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(225, 29, 72, 0.6);
         }
 
-        /* --- Footer --- */
         footer {
-            background: var(--secondary-blue);
+            background: var(--primary-blue);
             padding: 40px 0;
-            border-top: 5px solid var(--accent-gold);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .section-header h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="iaesconlogo-D5ksCC1A.jpg" alt="Logo" width="50" height="50" class="me-2">
-                <span class="d-none d-sm-inline font-weight-bold">IAESCON 2026</span>
+                <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Logo" class="me-3">
+                <span>IAESCON 2026</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -330,106 +344,123 @@
                     <li class="nav-item"><a class="nav-link" href="#committee">Committee</a></li>
                     <li class="nav-item"><a class="nav-link" href="#abstracts">Abstracts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faculty">Faculty</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#fees">Fees</a></li>
-                    <li class="nav-item ms-2"><a class="nav-link btn-register-nav" href="#pay">Register Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#attractions">Venue & Stay</a></li>
+                    <li class="nav-item"><a class="nav-link active-reg" href="#pay">Register Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="hero-wrapper">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-inner">
-                <div class="carousel-item active"><img src="visual_main01-BPcRntLo.jpg" class="d-block w-100" alt="Banner 1"></div>
-                <div class="carousel-item"><img src="visual_main02-CehMbH7r.jpg" class="d-block w-100" alt="Banner 2"></div>
-                <div class="carousel-item"><img src="dhuandhar.jpg" class="d-block w-100" alt="Dhuandhar"></div>
-                <div class="carousel-item"><img src="bhedaghat.jpg" class="d-block w-100" alt="Bhedaghat"></div>
-                <div class="carousel-item"><img src="city.jpg" class="d-block w-100" alt="City"></div>
-            </div>
-            <div class="slider-overlay">
-                <a href="#pay" class="btn btn-hero">Book Your Seat Now</a>
+    <section class="creative-hero">
+        <div class="container">
+            <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Conference Logo" class="hero-logo-large">
+            <h5 class="hero-subtitle">27th Annual Conference of the IAES</h5>
+            <h1 class="hero-title">IAESCON 2026</h1>
+            <p class="lead mb-4 text-white-50">Innovation, Excellence and Equity in Endocrine Oncology</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+                <div class="text-white fw-bold d-flex align-items-center me-4">
+                    <i class="fas fa-calendar-alt text-warning me-2 fs-4"></i> 24th - 25th Oct 2026
+                </div>
+                <a href="https://maps.app.goo.gl/ZnEwvgfB5b84rDKv7?g_st=iw" target="_blank" class="location-btn">
+                    <i class="fas fa-map-marker-alt location-icon"></i> NSCBMCH, Jabalpur
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="py-5 text-center">
+    <section id="committee" class="section-padding bg-light">
         <div class="container">
-            <h5 class="text-uppercase text-muted letter-spacing-2 ls-2">27th Annual Conference of the IAES</h5>
-            <h1 class="fw-bold text-primary my-3">Innovation, Excellence and Equity in Endocrine Oncology</h1>
-            <div class="d-flex justify-content-center gap-4 mt-4 text-muted">
-                <span><i class="fas fa-calendar-alt me-2 text-warning"></i> 24th - 25th Oct 2026</span>
-                <span><i class="fas fa-map-marker-alt me-2 text-warning"></i> NSCBMCH, Jabalpur</span>
+            <div class="section-header"><h2>Organizing Committee</h2></div>
+            
+            <div class="row g-4 mb-4">
+                <div class="col-lg-12">
+                    <div class="info-box border-start border-5 border-primary text-start">
+                        <div class="row">
+                            <div class="col-md-3 border-end">
+                                <h5 class="text-primary fw-bold">Chief Patron</h5>
+                                <p class="mb-0"><strong>Prof. Navneet Saxena</strong><br><span class="text-muted small">Dean, NSCBMC, Jabalpur</span></p>
+                            </div>
+                            <div class="col-md-3 border-end">
+                                <h5 class="text-primary fw-bold">Org. Chairman</h5>
+                                <p class="mb-0"><strong>Dr. Deepti Bala Sharma</strong></p>
+                            </div>
+                            <div class="col-md-3 border-end">
+                                <h5 class="text-primary fw-bold">Org. Secretary</h5>
+                                <p class="mb-0"><strong>Dr. Sanjay Kumar Yadav</strong></p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5 class="text-primary fw-bold">President IAES</h5>
+                                <p class="mb-0"><strong>Dr. Gaurav Agarwal</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section id="committee" class="py-5">
-        <div class="container">
-            <h2 class="section-header">Organizing Committee</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="info-box">
-                        <i class="fas fa-user-tie info-icon"></i>
-                        <h5 class="fw-bold mb-3">Leadership</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li class="mb-2"><strong>Chief Patron:</strong> Prof. Navneet Saxena</li>
-                            <li class="mb-2"><strong>President IAES:</strong> Dr. Gaurav Agarwal</li>
-                            <li class="mb-2"><strong>Org. Chairman:</strong> Dr. Deepti Bala Sharma</li>
-                            <li><strong>Org. Secretary:</strong> Dr. Sanjay Kumar Yadav</li>
+                    <div class="info-box h-100 text-start">
+                        <h5 class="fw-bold text-primary mb-3"><i class="fas fa-star me-2"></i>Patrons</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2"><strong>Prof. Dhananjaya Sharma</strong> (HoD Retd Surgery)</li>
+                            <li class="mb-2"><strong>Prof. S. K. Mishra</strong> (HoD Endocrine Surgery)</li>
+                            <li class="mb-2"><strong>Prof. V. K. Raina</strong> (HoD Retd Surgery)</li>
+                            <li class="mb-2"><strong>Prof. Y. R. Yadav</strong> (HoD Retd Neurosurgery)</li>
+                            <li class="mb-2"><strong>Prof. N. K. Jha</strong> (HoD Retd Surgery)</li>
+                            <li class="mb-2"><strong>Prof. D. K. Sinky</strong> (HoD Surgery, RIMS)</li>
+                            <li class="mb-2"><strong>Prof. Arvind Sharma</strong> (Supt. NSCBMC)</li>
+                            <li class="mb-2"><strong>Prof. Arjun Saxena</strong> (HoD Surgery, SSMCH)</li>
+                            <li class="mb-2"><strong>Dr. V. K. Bhardwaj</strong> (Sr. Consultant)</li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="info-box">
-                        <i class="fas fa-users info-icon"></i>
-                        <h5 class="fw-bold mb-3">Co-Organizers</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li class="mb-2"><strong>Co-Chairmen:</strong> Dr. Ashutosh Silodia, Dr. Manish Kaushal</li>
-                            <li><strong>Co-Secretaries:</strong> Dr. Chandan Tiwari, Dr. Pradeep Kothiya, Dr. Surabhi Garg</li>
-                        </ul>
+                    <div class="info-box h-100 text-start">
+                        <h5 class="fw-bold text-primary mb-3"><i class="fas fa-users-cog me-2"></i>Organizing Team</h5>
+                        <p class="fw-bold mb-1 text-dark">Co-Chairmen</p>
+                        <p class="text-muted small mb-2">Dr. Ashutosh Silodia, Dr. Manish Kaushal</p>
+                        
+                        <p class="fw-bold mb-1 text-dark">Co-Secretaries</p>
+                        <p class="text-muted small mb-3">Dr. Chandan Tiwari, Dr. Pradeep Kothiya, Dr. Surabhi Garg</p>
+
+                        <h5 class="fw-bold text-primary mb-2 mt-4"><i class="fas fa-layer-group me-2"></i>Core Committee</h5>
+                        <div class="text-muted small">
+                            Dr. Pawan Agarwal, Dr. Seema Suryawanshi, Dr. Vikesh Agarwal, Dr. Shyam Ji Rawat, 
+                            Dr. Rajesh Jain, Dr. Vikram Singh Chouhan, Dr. Arpana Soni, Dr. Uday Somashekhar, 
+                            Dr. Reena Kothari, Dr. Yogendra Wadiwa
+                        </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="info-box">
-                        <i class="fas fa-star info-icon"></i>
-                        <h5 class="fw-bold mb-3">Patrons</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li class="mb-2">Prof. Dhananjaya Sharma, Prof. V. K. Raina</li>
-                            <li class="mb-2">Prof. S. K. Mishra, Prof. Y. R. Yadav</li>
-                            <li>Prof. N. K. Jha, Prof. Arvind Sharma</li>
-                        </ul>
+                    <div class="info-box h-100 text-start">
+                        <h5 class="fw-bold text-primary mb-3"><i class="fas fa-user-graduate me-2"></i>IAESCON Mascots</h5>
+                        <p class="text-muted small">
+                            Dr. Bharath Shiva, Dr. Saurabh Maurya, Dr. Devam Baderiya, Dr. Garvit Garg, 
+                            Dr. Micheal Kino, Dr. Aman Mundra, Dr. Daphnie Jones, Dr. Drishti Hada, 
+                            Dr. Ghanshyam, Dr. Sahil Saket, Dr. Deepak Tripathi
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="abstracts" class="py-5 bg-white">
+    <section id="abstracts" class="section-padding">
         <div class="container">
-            <h2 class="section-header">Call for Abstracts</h2>
+            <div class="section-header"><h2>Call for Abstracts</h2></div>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-5">
-                    <div class="info-box" style="border-top: 4px solid #dc3545;">
-                        <i class="fas fa-file-alt fa-3x text-danger mb-3"></i>
-                        <h5 class="text-uppercase text-muted">Submission Deadline</h5>
-                        <h2 class="fw-bold text-dark mt-2">30th July 2026</h2>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="info-box" style="border-top: 4px solid #198754;">
-                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                        <h5 class="text-uppercase text-muted">Notification of Acceptance</h5>
-                        <h2 class="fw-bold text-dark mt-2">31st August 2026</h2>
-                    </div>
-                </div>
+                <div class="col-md-5"><div class="info-box" style="border-top-color: #dc3545;"><i class="fas fa-file-alt info-icon text-danger"></i><h5 class="text-uppercase text-muted">Submission Deadline</h5><h2 class="fw-bold text-dark mt-2">30th July 2026</h2></div></div>
+                <div class="col-md-5"><div class="info-box" style="border-top-color: #198754;"><i class="fas fa-check-circle info-icon text-success"></i><h5 class="text-uppercase text-muted">Notification</h5><h2 class="fw-bold text-dark mt-2">31st August 2026</h2></div></div>
             </div>
         </div>
     </section>
 
-    <section id="faculty" class="py-5">
+    <section id="faculty" class="section-padding bg-light">
         <div class="container">
-            <h2 class="section-header">International Faculty</h2>
-            <div class="row g-3">
+            <div class="section-header"><h2>International Faculty</h2></div>
+            <div class="row g-4 justify-content-center">
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Ngo Quoc Duy</h5><p class="faculty-country">Vietnam</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Clement Chia</h5><p class="faculty-country">Singapore</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Ranil Fernando</h5><p class="faculty-country">Sri Lanka</p></div></div>
@@ -438,16 +469,17 @@
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Dr. Geeta Lal</h5><p class="faculty-country">USA</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Dr. Thanawiboonchai</h5><p class="faculty-country">Thailand</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Dr. Shenthil</h5><p class="faculty-country">UK</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-placeholder-img"><i class="fas fa-user-md"></i></div><h5 class="faculty-name">Prof. Sohail Bakkar</h5><p class="faculty-country">Jordan</p></div></div>
             </div>
         </div>
     </section>
 
-    <section id="fees" class="py-5 bg-white">
+    <section id="fees" class="section-padding">
         <div class="container">
-            <h2 class="section-header">Registration Fees</h2>
-            <div class="fees-container">
+            <div class="section-header"><h2>Registration Fees</h2></div>
+            <div class="table-container">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-fees mb-0">
+                    <table class="table table-fees mb-0">
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -479,80 +511,95 @@
                         </tbody>
                     </table>
                 </div>
+                <p class="text-center p-3 mb-0 small text-muted">* All prices are exclusive of 18% GST.</p>
             </div>
-            <p class="text-center mt-3 text-muted small">* All prices are exclusive of 18% GST.</p>
         </div>
     </section>
 
-    <section class="py-5">
+    <section id="attractions" class="section-padding bg-light">
         <div class="container">
-            <h2 class="section-header">Experience Jabalpur</h2>
+            <div class="section-header"><h2>Places of Attraction</h2></div>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="info-box p-0 overflow-hidden">
-                        <img src="dhuandhar.jpg" class="w-100" style="height:200px; object-fit:cover;">
-                        <div class="p-3">
-                            <h5 class="fw-bold mb-0">Dhuandhar Falls</h5>
-                        </div>
+                <div class="col-md-4 mb-3">
+                    <div class="attraction-card">
+                        <img src="dhuandhar.jpg" class="attraction-img" alt="Dhuandhar Falls">
+                        <div class="attraction-overlay"><h5>Dhuandhar Falls</h5></div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="info-box p-0 overflow-hidden">
-                        <img src="bhedaghat.jpg" class="w-100" style="height:200px; object-fit:cover;">
-                        <div class="p-3">
-                            <h5 class="fw-bold mb-0">Bhedaghat</h5>
-                        </div>
+                <div class="col-md-4 mb-3">
+                    <div class="attraction-card">
+                        <img src="bandhavgarh.jpg" class="attraction-img" alt="Bandhavgarh National Park">
+                        <div class="attraction-overlay"><h5>Bandhavgarh National Park</h5></div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="info-box p-0 overflow-hidden">
-                        <img src="city.jpg" class="w-100" style="height:200px; object-fit:cover;">
-                        <div class="p-3">
-                            <h5 class="fw-bold mb-0">City Sights</h5>
-                        </div>
+                <div class="col-md-4 mb-3">
+                    <div class="attraction-card">
+                        <img src="bhedaghat.jpg.jpeg" class="attraction-img" alt="Bhedaghat">
+                        <div class="attraction-overlay"><h5>Bhedaghat Marble Rocks</h5></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="attraction-card">
+                        <img src="chausat.jpg" class="attraction-img" alt="Chausat Yogini">
+                        <div class="attraction-overlay"><h5>Chausat Yogini Temple</h5></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="attraction-card">
+                        <img src="madan_mahal.jpg" class="attraction-img" alt="Madan Mahal">
+                        <div class="attraction-overlay"><h5>Madan Mahal Fort</h5></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pay" class="payment-section">
+    <section id="pay" class="payment-section section-padding">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 text-center mb-5 mb-lg-0">
-                    <div class="qr-container">
-                        <img src="QR Scanner.jpeg" alt="Scan to Pay" class="img-fluid mb-2" style="max-width: 220px;">
-                        <br>
-                        <img src="Sharda Faoundation.jpg" alt="Sharda Foundation" class="img-fluid mt-3" style="max-height: 70px;">
-                        <div class="pt-4 text-dark text-start">
-                            <p class="mb-1"><i class="fas fa-university me-2 text-primary"></i> <strong>Account:</strong> Sharda Foundation</p>
-                            <p class="mb-1"><i class="fas fa-hashtag me-2 text-primary"></i> <strong>No:</strong> 50100838903731</p>
-                            <p class="mb-0"><i class="fas fa-code me-2 text-primary"></i> <strong>IFSC:</strong> HDFC0009404</p>
+            <div class="section-header"><h2>Payment & Registration</h2></div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="payment-card">
+                        
+                        <div class="instruction-box">
+                            <h5><i class="fas fa-info-circle me-2"></i>Registration Instructions</h5>
+                            <p>Please choose your <strong>Category</strong>, <strong>Time Slab</strong>, and any selected <strong>Residential Packages</strong> or <strong>Workshops</strong> from the tables above to calculate your total fee. Scan the QR code below to pay the full amount. <strong>Once payment is successful</strong>, click the 'Register Here' button to complete your registration form and upload the payment proof.</p>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center mb-4 mb-md-0 border-end">
+                                <div class="qr-container shadow-sm">
+                                    <img src="QR Scanner.jpeg" alt="Scan to Pay" class="img-fluid" style="max-width: 180px;">
+                                </div>
+                                <div class="mt-3 text-muted small fw-bold">Scan to Pay</div>
+                            </div>
+                            <div class="col-md-7 ps-md-5">
+                                <h5 class="fw-bold text-primary mb-3">Bank Details</h5>
+                                <ul class="list-unstyled text-muted">
+                                    <li class="mb-2"><i class="fas fa-university me-2 text-primary"></i> <strong>Account:</strong> Sharda Foundation</li>
+                                    <li class="mb-2"><i class="fas fa-hashtag me-2 text-primary"></i> <strong>No:</strong> 50100838903731</li>
+                                    <li class="mb-3"><i class="fas fa-code me-2 text-primary"></i> <strong>IFSC:</strong> HDFC0009404</li>
+                                </ul>
+                                <hr class="my-4">
+                                <div class="text-center">
+                                    <a href="https://forms.gle/ZQZcqN5noUdUo4XN8" target="_blank" class="upload-btn">
+                                        Register Here <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-7 text-center text-lg-start ps-lg-5">
-                    <h2 class="fw-bold mb-4 display-5">Complete Your Registration</h2>
-                    <ul class="list-unstyled lead mb-4">
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Scan the QR code to Pay.</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Take a Screenshot of success.</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-warning me-2"></i> Upload details via the button below.</li>
-                    </ul>
-                    
-                    <a href="https://forms.gle/UY5cY1q4ovWUNjtW7" target="_blank" class="upload-btn">
-                        <i class="fas fa-cloud-upload-alt me-2"></i> Upload Payment Proof
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="text-white text-center">
+    <footer class="text-center">
         <div class="container">
             <div class="mb-3">
-                <img src="Jabalpur Surgeons Assocoation.JPG" alt="Jabalpur Surgeons Association" class="img-fluid rounded-circle border border-2 border-white" style="width: 80px; height: 80px;">
+                <img src="Jabalpur Surgeons Assocoation.JPG" alt="Association Logo" class="img-fluid rounded-circle border border-2 border-white" style="width: 70px; height: 70px;">
             </div>
-            <p class="mb-0 opacity-75">&copy; 2026 IAESCON. Organized by NSCBMCH, Jabalpur.</p>
+            <p class="mb-0 opacity-75">© 2026 IAESCON. Organized by NSCBMCH, Jabalpur.</p>
         </div>
     </footer>
 
