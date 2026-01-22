@@ -18,10 +18,11 @@
     <style>
         :root {
             /* Premium Medical Palette */
-            --primary-dark: #0b2545;   /* Deep Navy */
-            --primary-blue: #134074;   /* Trust Blue */
-            --medical-teal: #00b4d8;   /* Surgical Teal */
-            --accent-gold: #d4af37;    /* Gold */
+            --primary-dark: #0b2545;   
+            --primary-blue: #134074;   
+            --medical-teal: #00b4d8;   
+            --accent-gold: #d4af37;
+            --accent-bronze: #cd7f32;
             --soft-bg: #f8f9fa;
             --glass-bg: rgba(255, 255, 255, 0.95);
             --card-shadow: 0 10px 40px rgba(19, 64, 116, 0.1);
@@ -39,14 +40,13 @@
 
         h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.5px; }
         
-        /* --- Glassmorphism Navbar --- */
+        /* --- Navbar --- */
         .navbar {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             padding: 12px 0;
-            transition: all 0.3s ease;
         }
         .navbar-brand img {
             height: 55px; width: 55px; border-radius: 50%;
@@ -56,55 +56,30 @@
             color: var(--primary-dark); font-weight: 800; font-size: 1.5rem; letter-spacing: 1px;
         }
         .nav-link {
-            color: var(--primary-dark) !important; font-weight: 600; margin: 0 10px; position: relative;
-            font-size: 0.9rem; text-transform: uppercase;
+            color: var(--primary-dark) !important; font-weight: 600; margin: 0 8px; position: relative;
+            font-size: 0.85rem; text-transform: uppercase;
         }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
-            background-color: var(--medical-teal); transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-        
+        .nav-link:hover { color: var(--medical-teal) !important; }
         .nav-link.active-reg {
-            background: var(--primary-blue); color: white !important; padding: 8px 25px; border-radius: 50px;
-            box-shadow: 0 0 0 0 rgba(19, 64, 116, 0.7);
-            animation: pulse-blue 2s infinite;
-        }
-        .nav-link.active-reg::after { display: none; }
-
-        @keyframes pulse-blue {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(19, 64, 116, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(19, 64, 116, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(19, 64, 116, 0); }
+            background: var(--primary-blue); color: white !important; padding: 8px 20px; border-radius: 50px;
         }
 
-        /* --- Creative Hero Section --- */
+        /* --- Hero Section --- */
         .creative-hero {
             position: relative;
             background: linear-gradient(120deg, #0b2545 0%, #134074 100%);
             color: white;
-            padding: 120px 0 150px;
-            overflow: hidden;
+            padding: 60px 0 140px;
             text-align: center;
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
         }
-        .creative-hero::before {
-            content: ''; position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
-            animation: rotate-bg 60s linear infinite;
-        }
-        @keyframes rotate-bg { 100% { transform: rotate(360deg); } }
-
         .hero-logo-large {
-            width: 160px; height: 160px; border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.2); padding: 5px;
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 6px solid rgba(255,255,255,0.2); padding: 5px;
             background: white; object-fit: contain;
-            box-shadow: 0 0 50px rgba(0, 180, 216, 0.3);
-            animation: float 6s ease-in-out infinite; margin-bottom: 30px;
+            box-shadow: 0 0 50px rgba(0, 180, 216, 0.4);
         }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem; font-weight: 700; margin-bottom: 10px;
@@ -112,122 +87,130 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-subtitle {
-            font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase;
-            color: var(--medical-teal); margin-bottom: 30px; font-weight: 700;
+            font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--medical-teal); margin-bottom: 20px; font-weight: 700;
         }
         
         .venue-pill {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2); color: white;
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3); color: white;
             padding: 12px 30px; border-radius: 50px; text-decoration: none;
-            display: inline-flex; align-items: center; transition: all 0.3s;
+            display: inline-flex; align-items: center; font-weight: 600;
+            transition: 0.3s;
         }
         .venue-pill:hover { background: white; color: var(--primary-blue); transform: translateY(-3px); }
 
+        /* Partner Logos */
+        .partner-logos {
+            display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap;
+        }
+        .partner-logos img.partner-img {
+            height: 140px; width: auto; 
+            background: white; border-radius: 50%; padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .partner-logos img.partner-img:hover { transform: scale(1.1); }
+
         /* --- Section Styling --- */
-        .section-padding { padding: 100px 0; position: relative; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-padding { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
         .section-header h2 {
-            font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);
+            font-size: 2.2rem; font-weight: 800; color: var(--primary-blue);
             position: relative; display: inline-block; padding-bottom: 15px;
         }
         .section-header h2::after {
             content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
             width: 80px; height: 4px; background: var(--medical-teal); border-radius: 2px;
         }
-        
-        /* --- Committee Avatars --- */
-        .leader-card {
-            background: white; padding: 25px; border-radius: 20px;
-            box-shadow: var(--card-shadow); transition: 0.3s; border: 1px solid #eef2f5;
-        }
-        .leader-card:hover { transform: translateY(-10px); border-color: var(--medical-teal); }
-        .leader-img {
-            width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
-            border: 3px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-        }
-        .role-badge {
-            background: var(--primary-blue); color: white; padding: 5px 15px;
-            border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
-            display: inline-block; margin-bottom: 10px;
-        }
 
-        /* --- Faculty & Attraction Cards --- */
-        .faculty-card, .attraction-card {
+        /* --- Committee Grid & Cards --- */
+        .leader-card, .faculty-card, .attraction-card {
             background: white; border-radius: 16px; padding: 20px; text-align: center;
-            box-shadow: var(--card-shadow); transition: all 0.4s ease; position: relative;
-            overflow: hidden; border: 1px solid #f0f4f8; height: 100%;
+            box-shadow: var(--card-shadow); border: 1px solid #f0f4f8; height: 100%;
+            transition: transform 0.3s;
         }
-        .faculty-card::before, .attraction-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(to right, var(--primary-blue), var(--medical-teal));
-            transition: height 0.3s;
-        }
-        .faculty-card:hover, .attraction-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        .faculty-card:hover::before, .attraction-card:hover::before { height: 100%; opacity: 0.05; }
+        .leader-card:hover, .faculty-card:hover { transform: translateY(-5px); border-color: var(--medical-teal); }
         
-        .faculty-img-box {
-            width: 90px; height: 90px; background: #e0f7fa; border-radius: 50%; margin: 0 auto 15px;
-            display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--medical-teal);
-            position: relative; z-index: 2;
-        }
-
-        /* --- Attractions Specific --- */
-        .attraction-card { padding: 0; border: none; }
-        .attraction-img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
-        .attraction-card:hover .attraction-img { transform: scale(1.1); }
-        .attraction-text { padding: 15px; background: white; position: relative; z-index: 2; }
-
-        /* --- Payment Section (Medical Chart Theme) --- */
-        .payment-section { background: #fff; position: relative; }
-        .payment-section::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, #f1f8fc 0%, white 100%); z-index: 0;
+        .leader-img {
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            border: 5px solid var(--medical-teal); box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 15px;
+            background-color: #f1f5f9;
         }
         
+        .list-box {
+            background: white; border-radius: 16px; padding: 25px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-blue);
+            height: 100%;
+        }
+
+        /* --- Awards & Grants --- */
+        .awards-section {
+            background: linear-gradient(to bottom, #fffbeb, #fff); 
+        }
+        .award-card {
+            background: white; border: 2px solid #fcd34d; border-radius: 15px; padding: 20px;
+            text-align: center; height: 100%; transition: 0.3s;
+        }
+        .award-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
+        .prize-amount { font-size: 1.1rem; color: #b45309; font-weight: 700; margin-bottom: 5px; }
+        .rank-badge { background: var(--accent-gold); color: white; padding: 2px 10px; border-radius: 10px; font-size: 0.8rem; }
+
+        .grant-card {
+            background: #f0fdfa; border: 2px solid var(--medical-teal); border-radius: 15px; padding: 30px;
+        }
+
+        /* --- Tables --- */
         .table-container {
             background: white; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; z-index: 1;
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
         }
         .table-title-bar {
-            background: var(--primary-blue); color: white; padding: 15px 25px;
+            background: var(--primary-blue); color: white; padding: 12px 20px;
             font-weight: 700; display: flex; align-items: center; gap: 10px;
         }
         .table-fees th {
             background: #f8fafc; color: var(--primary-dark); font-weight: 700;
-            text-transform: uppercase; font-size: 0.8rem; padding: 15px; border-bottom: 2px solid #e2e8f0;
+            font-size: 0.85rem; padding: 15px; border-bottom: 2px solid #e2e8f0;
         }
         .table-fees td {
-            vertical-align: middle; padding: 15px; font-size: 0.95rem; border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle; padding: 12px; font-size: 0.9rem; border-bottom: 1px solid #f1f5f9;
         }
         .bg-highlight { background-color: #fffbeb !important; color: #b45309; font-weight: 700; }
 
-        .payment-action-card {
+        /* --- Abstract Button --- */
+        .abstract-btn {
+            background: #e11d48; color: white; padding: 14px 40px; border-radius: 50px;
+            text-decoration: none; font-weight: 700; display: inline-block; margin-top: 30px;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(225, 29, 72, 0.3);
+        }
+        .abstract-btn:hover { background: #be123c; color: white; transform: translateY(-2px); }
+
+        /* --- Payment & Reg --- */
+        .payment-section { background: linear-gradient(180deg, #eef6fc 0%, #ffffff 100%); }
+        .payment-card {
             background: white; border-radius: 20px; padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;
-            position: relative; z-index: 1; margin-top: 50px;
         }
         .register-btn-main {
             background: linear-gradient(135deg, var(--medical-teal), var(--primary-blue));
             color: white; padding: 15px 40px; border-radius: 50px; border: none;
-            font-weight: 700; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
-            transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px;
-            animation: pulse-teal 2s infinite; text-decoration: none;
+            font-weight: 700; font-size: 1.1rem; text-decoration: none; display: inline-block;
         }
-        .register-btn-main:hover { transform: translateY(-3px); color: white; box-shadow: 0 15px 40px rgba(0, 180, 216, 0.6); }
+        .register-btn-main:hover { color: white; opacity: 0.9; }
 
-        @keyframes pulse-teal {
-            0% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 180, 216, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0); }
+        /* --- Attractions --- */
+        .attraction-card { padding: 0; overflow: hidden; border: none; }
+        .attraction-img { width: 100%; height: 200px; object-fit: cover; transition: 0.5s; }
+        .attraction-card:hover .attraction-img { transform: scale(1.1); }
+        .attraction-text { padding: 15px; background: white; text-align: center; }
+        
+        .faculty-img-box {
+            width: 80px; height: 80px; background: #e0f7fa; border-radius: 50%; margin: 0 auto 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--medical-teal);
         }
 
-        footer {
-            background: var(--primary-dark); color: white; padding: 50px 0;
-            text-align: center; border-top: 5px solid var(--accent-gold);
-        }
+        footer { background: var(--primary-dark); padding: 40px 0; color: rgba(255,255,255,0.8); }
     </style>
 </head>
 <body>
@@ -235,8 +218,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Logo">
-                <span class="ms-2">IAESCON 2026</span>
+                <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Logo" class="me-3">
+                <span>IAESCON 2026</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -244,8 +227,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#committee">Committee</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#abstracts">Abstracts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faculty">Faculty</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#abstracts">Abstracts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
                     <li class="nav-item"><a class="nav-link" href="#attractions">Attractions</a></li>
                     <li class="nav-item"><a class="nav-link active-reg" href="#pay">Register Now</a></li>
@@ -256,135 +240,128 @@
 
     <section class="creative-hero">
         <div class="container" data-aos="fade-up">
-            <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Conference Logo" class="hero-logo-large">
+            
+            <div class="partner-logos">
+                <img src="iaes_logo.png" alt="IAES" class="partner-img" onerror="this.style.display='none'">
+                <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" alt="Conference Logo" class="hero-logo-large">
+                <img src="jsa_logo.png" alt="JSA" class="partner-img" onerror="this.style.display='none'">
+                <img src="nscb_logo.png" alt="NSCB" class="partner-img" onerror="this.style.display='none'">
+            </div>
+            
             <h5 class="hero-subtitle">27th Annual Conference of the IAES</h5>
             <h1 class="hero-title">IAESCON 2026</h1>
-            <p class="lead mb-5 opacity-75">Innovation, Excellence and Equity in Endocrine Oncology</p>
+            <p class="lead mb-4 text-white-50">Innovation, Excellence and Equity in Endocrine Oncology</p>
             
-            <div class="d-flex justify-content-center gap-4 flex-wrap">
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <div class="venue-pill">
-                    <i class="fas fa-calendar-alt text-warning me-2"></i> 24th - 25th Oct 2026
+                    <i class="fas fa-calendar-alt text-warning me-2"></i> 24th & 25th Oct 2026
                 </div>
-                <a href="#venue" class="venue-pill">
+                <div class="venue-pill">
+                    <i class="fas fa-tools text-info me-2"></i> Pre-conf Workshop: 23rd Oct
+                </div>
+                <div class="venue-pill">
                     <i class="fas fa-map-marker-alt text-danger me-2"></i> NSCBMCH, Jabalpur
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="committee" class="section-padding">
+    <section id="committee" class="section-padding bg-light">
         <div class="container">
             <div class="section-header" data-aos="fade-up"><h2>Organizing Committee</h2></div>
             
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge">Org. Chairman</span><br>
-                        <img src="deepti.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Chairman">
-                        <h5 class="fw-bold text-primary">Dr. Deepti Bala Sharma</h5>
-                    </div>
+            <div class="row text-center justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-md-3 col-6 mb-4">
+                    <img src="deepti.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Org Chairman">
+                    <h6 class="fw-bold text-primary mb-1">Dr. Deepti Bala Sharma</h6>
+                    <p class="text-muted small">Organizing Chairman</p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge">Org. Secretary</span><br>
-                        <img src="sanjay.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Secretary">
-                        <h5 class="fw-bold text-primary">Dr. Sanjay Kumar Yadav</h5>
-                    </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <img src="sanjay.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Org Secretary">
+                    <h6 class="fw-bold text-primary mb-1">Dr. Sanjay Kumar Yadav</h6>
+                    <p class="text-muted small">Organizing Secretary</p>
                 </div>
             </div>
 
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge" style="background:#00b4d8">Co-Chairman</span><br>
-                        <img src="ashutosh.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Chair">
-                        <h5 class="fw-bold text-dark">Dr. Ashutosh Silodia</h5>
-                    </div>
+            <div class="row text-center justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-md-2 col-6 mb-4">
+                    <img src="ashutosh.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Chair">
+                    <h6 class="fw-bold text-dark mb-1">Dr. Ashutosh Silodia</h6>
+                    <p class="text-muted small">Co-chairman</p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge" style="background:#00b4d8">Co-Chairman</span><br>
-                        <img src="manish.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Chair">
-                        <h5 class="fw-bold text-dark">Dr. Manish Kaushal</h5>
-                    </div>
+                <div class="col-md-2 col-6 mb-4">
+                    <img src="manish.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Chair">
+                    <h6 class="fw-bold text-dark mb-1">Dr. Manish Kaushal</h6>
+                    <p class="text-muted small">Co-chairman</p>
                 </div>
-            </div>
-
-            <div class="row justify-content-center mb-5" data-aos="fade-up">
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge bg-secondary">Co-Secretary</span><br>
-                        <img src="chandan.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
-                        <h5 class="fw-bold text-dark">Dr. Chandan Tiwari</h5>
-                    </div>
+                <div class="col-md-2 col-6 mb-4">
+                    <img src="chandan.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
+                    <h6 class="fw-bold text-dark mb-1">Dr. Chandan Tiwari</h6>
+                    <p class="text-muted small">Co-secretary</p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge bg-secondary">Co-Secretary</span><br>
-                        <img src="pradeep.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
-                        <h5 class="fw-bold text-dark">Dr. Pradeep Kothiya</h5>
-                    </div>
+                <div class="col-md-2 col-6 mb-4">
+                    <img src="pradeep.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
+                    <h6 class="fw-bold text-dark mb-1">Dr. Pradeep Kothiya</h6>
+                    <p class="text-muted small">Co-secretary</p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 text-center">
-                    <div class="leader-card">
-                        <span class="role-badge bg-secondary">Co-Secretary</span><br>
-                        <img src="surabhi.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
-                        <h5 class="fw-bold text-dark">Dr. Surabhi Garg</h5>
-                    </div>
+                <div class="col-md-2 col-6 mb-4">
+                    <img src="surabhi.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Co-Sec">
+                    <h6 class="fw-bold text-dark mb-1">Dr. Surabhi Garg</h6>
+                    <p class="text-muted small">Co-secretary</p>
                 </div>
             </div>
 
-            <div class="row g-4" data-aos="fade-up">
-                <div class="col-md-4">
-                    <div class="leader-card h-100 text-start">
-                        <h5 class="fw-bold text-primary mb-3">Patrons</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li class="mb-2"><strong>Prof. Navneet Saxena</strong> (Chief Patron)</li>
-                            <li class="mb-2"><strong>Dr. Gaurav Agarwal</strong> (President IAES)</li>
-                            <li>Prof. Dhananjaya Sharma</li>
-                            <li>Prof. S. K. Mishra</li>
-                            <li>Prof. V. K. Raina</li>
-                            <li>Prof. Y. R. Yadav</li>
-                            <li>Prof. N. K. Jha</li>
-                            <li>Prof. D. K. Sinky</li>
-                            <li>Prof. Arvind Sharma</li>
-                            <li>Prof. Arjun Saxena</li>
-                            <li>Dr. V. K. Bhardwaj</li>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="list-box">
+                        <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Patrons</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2 text-dark fw-bold">Dr. Navneet Saxena (Chief Patron)</li>
+                            <li class="mb-2 text-dark fw-bold">Dr. Gaurav Agarwal (President IAES)</li>
+                            <li class="mb-2">Dr. Dhananjaya Sharma</li>
+                            <li class="mb-2">Dr. S. K. Mishra</li>
+                            <li class="mb-2">Dr. V. K. Raina</li>
+                            <li class="mb-2">Dr. Y. R. Yadav</li>
+                            <li class="mb-2">Dr. N. K. Jha</li>
+                            <li class="mb-2">Dr. D. K. Sinha</li>
+                            <li class="mb-2">Dr. Arvind Sharma</li>
+                            <li class="mb-2">Dr. Arjun Saxena</li>
+                            <li class="mb-2">Dr. V. K. Bhardwaj</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="leader-card h-100 text-start">
-                        <h5 class="fw-bold text-primary mb-3">Core Committee</h5>
-                        <ul class="list-unstyled text-muted small" style="columns: 2;">
-                            <li>Dr. Pawan Agarwal</li>
-                            <li>Dr. Seema Suryawanshi</li>
-                            <li>Dr. Vikesh Agarwal</li>
-                            <li>Dr. Shyam Ji Rawat</li>
-                            <li>Dr. Rajesh Jain</li>
-                            <li>Dr. Vikram Singh Chouhan</li>
-                            <li>Dr. Arpana Soni</li>
-                            <li>Dr. Uday Somashekhar</li>
-                            <li>Dr. Reena Kothari</li>
-                            <li>Dr. Yogendra Wadiwa</li>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="list-box">
+                        <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Core Committee</h5>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2">Dr. Pawan Agarwal</li>
+                            <li class="mb-2">Dr. Seema Suryawanshi</li>
+                            <li class="mb-2">Dr. Vikesh Agarwal</li>
+                            <li class="mb-2">Dr. Shyam Ji Rawat</li>
+                            <li class="mb-2">Dr. Rajesh Jain</li>
+                            <li class="mb-2">Dr. Vikram Singh Chouhan</li>
+                            <li class="mb-2">Dr. Arpana Soni</li>
+                            <li class="mb-2">Dr. Uday Somashekhar</li>
+                            <li class="mb-2">Dr. Reena Kothari</li>
+                            <li class="mb-2">Dr. Yogendra Wadiwa</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="leader-card h-100 text-start">
-                        <h5 class="fw-bold text-primary mb-3">Mascots</h5>
-                        <ul class="list-unstyled text-muted small" style="columns: 2;">
-                            <li>Dr. Bharath Shiva</li>
-                            <li>Dr. Saurabh Maurya</li>
-                            <li>Dr. Devam Baderiya</li>
-                            <li>Dr. Garvit Garg</li>
-                            <li>Dr. Micheal Kino</li>
-                            <li>Dr. Aman Mundra</li>
-                            <li>Dr. Daphnie Jones</li>
-                            <li>Dr. Drishti Hada</li>
-                            <li>Dr. Ghanshyam</li>
-                            <li>Dr. Sahil Saket</li>
-                            <li>Dr. Deepak Tripathi</li>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="list-box">
+                        <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Mascots</h5>
+                        <ul class="list-unstyled small text-muted" style="columns: 2;">
+                            <li class="mb-2">Dr. Bharath Shiva</li>
+                            <li class="mb-2">Dr. Saurabh Maurya</li>
+                            <li class="mb-2">Dr. Devam Baderiya</li>
+                            <li class="mb-2">Dr. Garvit Garg</li>
+                            <li class="mb-2">Dr. Micheal Kino</li>
+                            <li class="mb-2">Dr. Aman Mundra</li>
+                            <li class="mb-2">Dr. Daphnie Jones</li>
+                            <li class="mb-2">Dr. Drishti Hada</li>
+                            <li class="mb-2">Dr. Ghanshyam</li>
+                            <li class="mb-2">Dr. Sahil Saket</li>
+                            <li class="mb-2">Dr. Deepak Tripathi</li>
                         </ul>
                     </div>
                 </div>
@@ -392,96 +369,171 @@
         </div>
     </section>
 
-    <section id="abstracts" class="section-padding">
+    <section id="faculty" class="section-padding">
         <div class="container">
+            <div class="section-header" data-aos="fade-up"><h2>International Faculty</h2></div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Ngo Quoc Duy</h6><p class="small text-muted">Vietnam</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Clement Chia</h6><p class="small text-muted">Singapore</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Ranil Fernando</h6><p class="small text-muted">Sri Lanka</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Hakim</h6><p class="small text-muted">Malaysia</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Aljohani</h6><p class="small text-muted">UAE</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Shenthil</h6><p class="small text-muted">UK</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Goonj Johri</h6><p class="small text-muted">UK</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Raouef</h6><p class="small text-muted">UK</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Geeta Lal</h6><p class="small text-muted">USA</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Pallavi K</h6><p class="small text-muted">USA</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Kattamanchi</h6><p class="small text-muted">USA</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. T. Thanawiboonchai</h6><p class="small text-muted">Thailand</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Y Ito</h6><p class="small text-muted">Japan</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Yu-Hsien Chen</h6><p class="small text-muted">Taiwan</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Diluk Pinto</h6><p class="small text-muted">Sri Lanka</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. V. Humbardzumyan</h6><p class="small text-muted">Armenia</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Kintu R Luwaga</h6><p class="small text-muted">Uganda</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Hendry Irawan</h6><p class="small text-muted">Indonesia</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="section-padding awards-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Celebrating Young Minds</h2>
+                <p class="lead text-muted fw-bold">Awards & Prizes Worth ₹3 Lakhs</p>
+                <p class="small text-muted">Inspiring Surgical Innovation</p>
+                <p class="text-muted mt-2">Awardees will be announced during the Valedictory Ceremony.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-lg-2">
+                    <div class="award-card">
+                        <i class="fas fa-microphone-alt fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-bold">Best Oral</h6>
+                        <div class="prize-amount">₹20,000</div><div class="rank-badge">1st Prize</div>
+                        <hr>
+                        <div class="prize-amount small">₹10,000</div><div class="rank-badge bg-secondary">2nd</div>
+                        <div class="prize-amount small mt-1">₹5,000</div><div class="rank-badge" style="background:#cd7f32">3rd</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="award-card">
+                        <i class="fas fa-video fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-bold">Best Video</h6>
+                        <div class="prize-amount">₹15,000</div><div class="rank-badge">1st Prize</div>
+                        <hr>
+                        <div class="prize-amount small">₹10,000</div><div class="rank-badge bg-secondary">2nd</div>
+                        <div class="prize-amount small mt-1">₹5,000</div><div class="rank-badge" style="background:#cd7f32">3rd</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="award-card">
+                        <i class="fas fa-image fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-bold">Best Poster</h6>
+                        <div class="prize-amount">₹10,000</div><div class="rank-badge">1st Prize</div>
+                        <hr>
+                        <div class="prize-amount small">₹7,500</div><div class="rank-badge bg-secondary">2nd</div>
+                        <div class="prize-amount small mt-1">₹5,000</div><div class="rank-badge" style="background:#cd7f32">3rd</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="award-card">
+                        <i class="fas fa-user-graduate fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-bold">Mentor-Mentee</h6>
+                        <div class="prize-amount">₹10,000</div><div class="rank-badge">1st Prize</div>
+                        <hr>
+                        <div class="prize-amount small">₹5,000</div><div class="rank-badge bg-secondary">2nd Prize</div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <div class="award-card">
+                        <i class="fas fa-comments fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-bold">Best Case</h6>
+                        <p class="small mb-1">3 Outstanding Presenters</p>
+                        <div class="prize-amount">₹5,000</div><div class="rank-badge">Each</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-8">
+                    <div class="alert alert-warning text-center small">
+                        <strong>Eligibility:</strong> Open to General Surgery Residents & Senior Residents. 
+                        Must be registered for IAESCON 2026.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="grants" class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="grant-card text-center" data-aos="zoom-in">
+                        <h3 class="fw-bold text-primary mb-3">Empowering the Next Generation</h3>
+                        <p class="lead">10 Travel Grants Available for Residents!</p>
+                        
+                        <div class="row mt-4 g-3 justify-content-center">
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-white h-100">
+                                    <i class="fas fa-ticket-alt text-success fa-2x mb-2"></i>
+                                    <h6>Workshop Fee Waiver</h6>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-white h-100">
+                                    <i class="fas fa-hotel text-success fa-2x mb-2"></i>
+                                    <h6>Free Accommodation</h6>
+                                    <small>(Double Occupancy)</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-white h-100">
+                                    <i class="fas fa-rupee-sign text-success fa-2x mb-2"></i>
+                                    <h6>₹10,000 Travel Support</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 small text-muted">
+                            Preference to applicants from LMICs. Abstract submission & Registration is mandatory.
+                            <br>Selected awardees will be notified by email before the conference.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="abstracts" class="section-padding bg-light">
+        <div class="container text-center">
             <div class="section-header" data-aos="fade-up"><h2>Call for Abstracts</h2></div>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-5" data-aos="fade-up">
-                    <div class="leader-card text-center" style="border-top: 4px solid #dc3545;">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="leader-card" style="border-top: 4px solid #dc3545;">
                         <h5 class="text-uppercase text-muted">Submission Deadline</h5>
                         <h2 class="fw-bold text-dark mt-2">30th July 2026</h2>
                     </div>
                 </div>
-                <div class="col-md-5" data-aos="fade-up">
-                    <div class="leader-card text-center" style="border-top: 4px solid #198754;">
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="leader-card" style="border-top: 4px solid #198754;">
                         <h5 class="text-uppercase text-muted">Notification</h5>
                         <h2 class="fw-bold text-dark mt-2">31st August 2026</h2>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="faculty" class="section-padding" style="background: #f0f7fa;">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up"><h2>International Faculty</h2></div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Ngo Quoc Duy</h6><p class="small text-muted">Vietnam</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Clement Chia</h6><p class="small text-muted">Singapore</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Ranil Fernando</h6><p class="small text-muted">Sri Lanka</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Hakim</h6><p class="small text-muted">Malaysia</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Aljohani</h6><p class="small text-muted">UAE</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Geeta Lal</h6><p class="small text-muted">USA</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Thanawiboonchai</h6><p class="small text-muted">Thailand</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Shenthil</h6><p class="small text-muted">UK</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Prof. Sohail Bakkar</h6><p class="small text-muted">Jordan</p></div></div>
-            </div>
+            <a href="https://forms.gle/hE1jEEwkKyLirRXu5" target="_blank" class="abstract-btn shadow-lg">
+                <i class="fas fa-paper-plane me-2"></i> Click Here to Submit Abstract
+            </a>
         </div>
     </section>
 
     <section id="venue" class="section-padding">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up"><h2>Venue & Stay</h2></div>
-            <div class="row justify-content-center" data-aos="fade-up">
-                <div class="col-lg-10">
-                    <div class="card border-0 shadow-lg overflow-hidden rounded-4">
-                        <img src="venue.jpg.jpeg" onerror="this.src='venue.jpg'" class="img-fluid" alt="Shawn Elizey" style="height: 450px; object-fit: cover;">
-                        <div class="card-body p-4 text-center">
-                            <h3 class="fw-bold text-primary">Shawn Elizey</h3>
-                            <a href="https://maps.app.goo.gl/ZnEwvgfB5b84rDKv7?g_st=iw" target="_blank" class="btn btn-outline-primary rounded-pill px-4 mt-2">
-                                <i class="fas fa-location-arrow me-2"></i> Get Directions
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="attractions" class="section-padding" style="background: #f8f9fa;">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up"><h2>Places of Attraction</h2></div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4 mb-3" data-aos="fade-up">
-                    <div class="attraction-card">
-                        <img src="dhuandhar.jpg" class="attraction-img" alt="Dhuandhar">
-                        <div class="attraction-text"><h6 class="fw-bold mb-0">Dhuandhar Falls</h6></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="attraction-card">
-                        <img src="bandhavgarh.jpg" class="attraction-img" alt="Bandhavgarh">
-                        <div class="attraction-text"><h6 class="fw-bold mb-0">Bandhavgarh National Park</h6></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="attraction-card">
-                        <img src="bhedaghat.jpg.jpeg" class="attraction-img" alt="Bhedaghat">
-                        <div class="attraction-text"><h6 class="fw-bold mb-0">Bhedaghat Marble Rocks</h6></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3" data-aos="fade-up">
-                    <div class="attraction-card">
-                        <img src="chausat.jpg" class="attraction-img" alt="Chausat Yogini">
-                        <div class="attraction-text"><h6 class="fw-bold mb-0">Chausat Yogini Temple</h6></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="attraction-card">
-                        <img src="madan_mahal.jpg" class="attraction-img" alt="Madan Mahal">
-                        <div class="attraction-text"><h6 class="fw-bold mb-0">Madan Mahal Fort</h6></div>
-                    </div>
-                </div>
+        <div class="container text-center" data-aos="fade-up">
+            <div class="section-header"><h2>Venue</h2></div>
+            <div class="p-5 bg-white shadow-sm rounded border">
+                <i class="fas fa-map-marked-alt text-muted fa-3x mb-3"></i>
+                <h4 class="text-primary fw-bold">Venue Details Updating Soon</h4>
+                <p class="text-muted">The exact location and hotel details will be announced shortly.</p>
             </div>
         </div>
     </section>
@@ -498,13 +550,11 @@
                         <div class="table-responsive">
                             <table class="table table-fees mb-0">
                                 <thead>
-                                    <tr>
-                                        <th>Category</th><th>Early Bird<br>(Till 30th April)</th><th>Second Slab<br>(May-Aug)</th><th>Third Slab<br>(Sep)</th><th>On-Spot<br>(Oct)</th>
-                                    </tr>
+                                    <tr><th>Category</th><th>Early Bird<br><small>(Till April 2026)</small></th><th>Second Slab<br><small>(May-Aug 2026)</small></th><th>Third Slab<br><small>(Sep 2026)</small></th><th>On-Spot<br><small>(Oct 2026)</small></th></tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td class="text-start">Delegates (IAES Members)</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹14,000</td><td>₹21,000</td></tr>
-                                    <tr><td class="text-start">Residents / Senior Residents</td><td>₹5,000</td><td class="bg-highlight">₹6,000</td><td>₹7,000</td><td>₹8,000</td></tr>
+                                    <tr><td class="text-start">Delegates (IAES Members)</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹15,000</td><td>₹22,000</td></tr>
+                                    <tr><td class="text-start">Residents / Senior Residents</td><td>₹6,000</td><td class="bg-highlight">₹7,000</td><td>₹8,000</td><td>₹9,000</td></tr>
                                     <tr><td class="text-start">Overseas Delegates</td><td>$250</td><td class="bg-highlight">$300</td><td>$350</td><td>$400</td></tr>
                                     <tr><td class="text-start">SAARC Delegates</td><td>$150</td><td class="bg-highlight">$180</td><td>$200</td><td>$250</td></tr>
                                     <tr><td class="text-start">Allied Specialists</td><td>₹2,000</td><td class="bg-highlight">₹3,000</td><td>₹4,000</td><td>₹5,000</td></tr>
@@ -515,7 +565,7 @@
                         </div>
                     </div>
 
-                    <div class="table-title-bar rounded-top mt-4"><i class="fas fa-bed me-2"></i> 2. Residential Packages</div>
+                    <div class="table-title-bar rounded-top mt-4"><i class="fas fa-bed me-2"></i> 2. Residential Packages (Reg + Stay)</div>
                     <div class="table-container mb-4">
                         <div class="table-responsive">
                             <table class="table table-fees mb-0">
@@ -523,15 +573,15 @@
                                     <tr><th>Duration</th><th>Early Bird</th><th class="bg-highlight">Second Slab</th><th>Third Slab</th></tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td class="text-start">4 Nights (22nd-25th Oct)</td><td>₹30,000</td><td class="bg-highlight">₹32,000</td><td>₹34,000</td></tr>
-                                    <tr><td class="text-start">3 Nights (22nd-24th Oct)</td><td>₹25,000</td><td class="bg-highlight">₹27,000</td><td>₹29,000</td></tr>
-                                    <tr><td class="text-start">2 Nights (23rd-24th Oct)</td><td>₹21,500</td><td class="bg-highlight">₹23,500</td><td>₹25,500</td></tr>
+                                    <tr><td class="text-start">4 Nights (22nd-25th Oct)</td><td>₹32,000</td><td class="bg-highlight">₹34,000</td><td>₹36,000</td></tr>
+                                    <tr><td class="text-start">3 Nights (22nd-24th Oct)</td><td>₹27,000</td><td class="bg-highlight">₹29,000</td><td>₹31,000</td></tr>
+                                    <tr><td class="text-start">2 Nights (23rd-24th Oct)</td><td>₹22,500</td><td class="bg-highlight">₹25,500</td><td>₹27,500</td></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <div class="table-title-bar rounded-top mt-4"><i class="fas fa-microscope me-2"></i> 3. Workshops</div>
+                    <div class="table-title-bar rounded-top mt-4"><i class="fas fa-microscope me-2"></i> 3. Pre-Conference Workshops (23rd Oct)</div>
                     <div class="table-container mb-2">
                         <div class="table-responsive">
                             <table class="table table-fees mb-0">
@@ -540,11 +590,11 @@
                                 </thead>
                                 <tbody>
                                     <tr><td colspan="4" class="fw-bold bg-light text-start text-primary">Hands-On Cadaveric Workshops</td></tr>
-                                    <tr><td class="text-start">Oncoplastic + ALND</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹15,000</td></tr>
-                                    <tr><td class="text-start">Thyroid USG & MWA</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹15,000</td></tr>
-                                    <tr><td class="text-start">Breast USG & MWA</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹15,000</td></tr>
-                                    <tr><td class="text-start">Transoral Endo Thyroid</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹15,000</td></tr>
-                                    <tr><td class="text-start">Retroperitoneoscopic Adrenal</td><td>₹10,000</td><td class="bg-highlight">₹12,000</td><td>₹15,000</td></tr>
+                                    <tr><td class="text-start">Oncoplastic + ALND</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
+                                    <tr><td class="text-start">Thyroid USG & MWA</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
+                                    <tr><td class="text-start">Breast USG & MWA</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
+                                    <tr><td class="text-start">Transoral Endo Thyroid</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
+                                    <tr><td class="text-start">Retroperitoneoscopic Adrenal</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
                                     
                                     <tr><td colspan="4" class="fw-bold bg-light text-start text-primary">Video Workshops</td></tr>
                                     <tr><td class="text-start">Breast Surgery & SLNB</td><td>₹4,000</td><td class="bg-highlight">₹5,000</td><td>₹6,000</td></tr>
@@ -554,9 +604,14 @@
                             </table>
                         </div>
                     </div>
-                    <p class="text-center small text-muted mb-5">* All prices exclusive of 18% GST. | 50% discount for Trainees (Certificate from HoD required).</p>
+                    <p class="text-center small fw-bold text-dark mb-5">** Rates are Inclusive of 18% GST | 50% discount for Trainees (Proof required). **</p>
 
                     <div class="payment-action-card" data-aos="flip-up">
+                        <div class="alert alert-info mb-4 small text-start">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Select the slab of Conference Registration and Residential Packages (Reg + Stay) and Pre-Conference Workshops (23rd Oct) as per choice/need and pay the amount on given qr code and fill the registration form.
+                        </div>
+
                         <div class="row align-items-center">
                             <div class="col-md-4 text-center border-end">
                                 <div class="p-3 bg-white border rounded d-inline-block">
@@ -583,9 +638,24 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container text-center">
-            <img src="Jabalpur Surgeons Assocoation.JPG" alt="Logo" class="rounded-circle border border-white mb-3" width="80">
+    <section id="attractions" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up"><h2>Places of Attraction</h2></div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 mb-3" data-aos="fade-up"><div class="attraction-card"><img src="dhuandhar.jpg" class="attraction-img"><div class="attraction-text"><h6 class="fw-bold mb-0">Dhuandhar Falls</h6></div></div></div>
+                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="100"><div class="attraction-card"><img src="bandhavgarh.jpg" class="attraction-img"><div class="attraction-text"><h6 class="fw-bold mb-0">Bandhavgarh National Park</h6></div></div></div>
+                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="200"><div class="attraction-card"><img src="bhedaghat.jpg.jpeg" class="attraction-img"><div class="attraction-text"><h6 class="fw-bold mb-0">Bhedaghat Marble Rocks</h6></div></div></div>
+                <div class="col-md-4 mb-3" data-aos="fade-up"><div class="attraction-card"><img src="chausat.jpg" class="attraction-img"><div class="attraction-text"><h6 class="fw-bold mb-0">Chausat Yogini Temple</h6></div></div></div>
+                <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="100"><div class="attraction-card"><img src="madan_mahal.jpg" class="attraction-img"><div class="attraction-text"><h6 class="fw-bold mb-0">Madan Mahal Fort</h6></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-3">
+                <img src="Jabalpur Surgeons Assocoation.JPG" alt="Logo" class="rounded-circle border border-white mb-3" width="80">
+            </div>
             <p class="mb-0 opacity-75">© 2026 IAESCON. Organized by NSCBMCH, Jabalpur.</p>
         </div>
     </footer>
