@@ -24,21 +24,23 @@
             --accent-gold: #d4af37;
             --accent-bronze: #cd7f32;
             --soft-bg: #f8f9fa;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --card-shadow: 0 10px 40px rgba(19, 64, 116, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.98);
+            --card-shadow: 0 10px 40px rgba(19, 64, 116, 0.08);
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #334155;
             background-color: #ffffff;
+            /* Subtle Medical Grid Pattern */
             background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-size: 40px 40px;
             padding-top: 80px;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.5px; }
+        h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.5px; color: var(--primary-dark); }
         
         /* --- Navbar --- */
         .navbar {
@@ -74,12 +76,25 @@
             border-bottom-left-radius: 60px;
             border-bottom-right-radius: 60px;
         }
+        
         .hero-logo-large {
             width: 150px; height: 150px; border-radius: 50%;
             border: 6px solid rgba(255,255,255,0.2); padding: 5px;
             background: white; object-fit: contain;
             box-shadow: 0 0 50px rgba(0, 180, 216, 0.4);
         }
+        
+        .partner-logos {
+            display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap;
+        }
+        .partner-logos img.partner-img {
+            height: 140px; width: auto; 
+            background: white; border-radius: 50%; padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .partner-logos img.partner-img:hover { transform: scale(1.1); }
+
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem; font-weight: 700; margin-bottom: 10px;
@@ -100,21 +115,9 @@
         }
         .venue-pill:hover { background: white; color: var(--primary-blue); transform: translateY(-3px); }
 
-        /* Partner Logos */
-        .partner-logos {
-            display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap;
-        }
-        .partner-logos img.partner-img {
-            height: 140px; width: auto; 
-            background: white; border-radius: 50%; padding: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        .partner-logos img.partner-img:hover { transform: scale(1.1); }
-
         /* --- Section Styling --- */
-        .section-padding { padding: 80px 0; }
-        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-padding { padding: 90px 0; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
         .section-header h2 {
             font-size: 2.2rem; font-weight: 800; color: var(--primary-blue);
             position: relative; display: inline-block; padding-bottom: 15px;
@@ -123,6 +126,24 @@
             content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
             width: 80px; height: 4px; background: var(--medical-teal); border-radius: 2px;
         }
+
+        /* --- Message Cards --- */
+        .message-card {
+            background: white; border-radius: 16px; border: 1px solid #eef2f5;
+            box-shadow: var(--card-shadow); padding: 40px; height: 100%;
+            position: relative; overflow: hidden;
+        }
+        .message-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+            background: var(--medical-teal);
+        }
+        .message-img {
+            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--soft-bg); margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .message-text { text-align: justify; font-size: 0.95rem; color: #555; }
+        .quote-icon { font-size: 2rem; color: #e0e7ff; position: absolute; top: 20px; right: 30px; }
 
         /* --- Committee Grid & Cards --- */
         .leader-card, .faculty-card, .attraction-card {
@@ -145,9 +166,7 @@
         }
 
         /* --- Awards & Grants --- */
-        .awards-section {
-            background: linear-gradient(to bottom, #fffbeb, #fff); 
-        }
+        .awards-section { background: linear-gradient(to bottom, #fffbeb, #fff); }
         .award-card {
             background: white; border: 2px solid #fcd34d; border-radius: 15px; padding: 20px;
             text-align: center; height: 100%; transition: 0.3s;
@@ -226,12 +245,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#messages">Messages</a></li>
                     <li class="nav-item"><a class="nav-link" href="#committee">Committee</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faculty">Faculty</a></li>
                     <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#abstracts">Abstracts</a></li>
                     <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#attractions">Attractions</a></li>
                     <li class="nav-item"><a class="nav-link active-reg" href="#pay">Register Now</a></li>
                 </ul>
             </div>
@@ -266,10 +284,80 @@
         </div>
     </section>
 
+    <section id="messages" class="section-padding">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="message-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <div class="text-center">
+                            <img src="president.jpg" onerror="this.src='https://via.placeholder.com/150'" class="message-img" alt="Prof. Gaurav Agarwal">
+                            <h4 class="fw-bold text-primary">Message from the President, IAES</h4>
+                            <p class="text-muted fw-bold mb-4">Prof. Gaurav Agarwal</p>
+                        </div>
+                        <div class="message-text">
+                            <p>It gives me immense pleasure to invite you all to the 27th Annual Conference of the Indian Association of Endocrine Surgeons (IAESCON 2026), to be held on 23-25 October 2026 in the vibrant city of Jabalpur, Madhya Pradesh, the heart of India, and now an emerging hub for academic excellence and surgical innovation.</p>
+                            <p>Each IAESCON has set new benchmarks in advancing the science and art of endocrine surgery. The IAESCON 2026 promises to be bigger and better to come up to the expectations of the IAES membership. The organizing team is curating a rich academic program blending cutting-edge science with real-world practicality. Pre-conference day will feature hands-on cadaveric workshops in trans-oral endoscopic thyroidectomy via vestibular approach (TOETVA), retroperitoneoscopic adrenalectomy, oncoplastic breast surgical procedures, low-cost sentinel lymph node biopsy and other advanced thyroid and adrenal surgery.</p>
+                            <p>We intend to connect Indian endocrine surgery fraternity with the global endocrine surgery associations and key opinion leaders. Efforts are on to have a "convergence session" of IAES with various international and other national endocrine surgery associations. As our specialty continues to evolve rapidly, I urge every member, trainee, and resident to participate actively not just as delegates, but as contributors.</p>
+                            <p>Let us come together to learn, share, and celebrate the remarkable progress of our fraternity. I look forward to welcoming you all to Jabalpur for an unforgettable academic and cultural experience.</p>
+                            <p class="fw-bold text-primary mt-3">See you at IAESCON 2026 — where ideas meet inspiration, and learning meets legacy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="message-card">
+                        <i class="fas fa-users quote-icon"></i>
+                        <div class="text-center">
+                            <img src="logo.jpg.jpg" onerror="this.src='logo.jpg'" class="message-img" alt="Organizing Team" style="border-radius: 10px;">
+                            <h4 class="fw-bold text-primary">Message from the Organizing Team</h4>
+                            <p class="text-muted fw-bold mb-4">IAESCON 2026, Jabalpur</p>
+                        </div>
+                        <div class="message-text">
+                            <p>It is with immense pride and heartfelt joy that we welcome you to IAESCON 2026, being hosted for the very first time in the Mahakaushal region of Madhya Pradesh, the land of tigers, rivers, heritage, and healing hands.</p>
+                            <p>This 27th edition of IAESCON is designed to be a landmark academic and surgical experience, bringing together the best minds from India and across the globe. Our vision is to create a platform where innovation meets practicality, where young surgeons learn directly from masters, and where collaboration shapes the next era of endocrine surgery.</p>
+                            <p>The conference will feature a series of hands-on cadaveric workshops on Breast Oncoplasty, Axillary Surgery, Transoral Endoscopic Thyroidectomy, Microwave Ablation, and Retroperitoneoscopic Adrenal Surgery, led by national and international pioneers. With a strong emphasis on learning by doing, these workshops will offer participants rare opportunities to refine their skills in real-time.</p>
+                            <p>We also encourage residents and young surgeons to submit their research papers, case presentations, videos, and posters with multiple awards, cash prizes, and travel grants awaiting the best talent. Your participation will not only enrich the conference but will also strengthen the spirit of inquiry and mentorship that defines IAES.</p>
+                            <p class="fw-bold text-primary mt-3">Come, be part of this academic celebration where knowledge, camaraderie, and inspiration converge in the heart of India.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="committee" class="section-padding bg-light">
         <div class="container">
             <div class="section-header" data-aos="fade-up"><h2>Organizing Committee</h2></div>
             
+            <div class="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="col-lg-10">
+                    <div class="list-box text-center bg-white shadow-sm" style="border-top: 5px solid var(--accent-gold);">
+                        <h4 class="fw-bold text-dark mb-4">IAES Office Bearers</h4>
+                        <div class="row text-start justify-content-center">
+                            <div class="col-md-5">
+                                <ul class="list-unstyled text-muted small">
+                                    <li class="mb-2"><strong>Founder President:</strong> Padmashri Dr. S. Vittal</li>
+                                    <li class="mb-2"><strong>President:</strong> Dr. Gaurav Agarwal</li>
+                                    <li class="mb-2"><strong>President Elect:</strong> Dr. Anand Mishra</li>
+                                    <li class="mb-2"><strong>Imm. Past President:</strong> Dr. Anjali Mishra</li>
+                                    <li class="mb-2"><strong>Hon. Secretary:</strong> Dr. Pooja Ramakant</li>
+                                    <li class="mb-2"><strong>Hon. Treasurer:</strong> Dr. Nikhil Singh</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled text-muted small">
+                                    <li class="mb-2"><strong>Vice Presidents:</strong> Dr. Gyan Chand, Dr. M. Sabaretnam, Dr. Ritesh Agarwal</li>
+                                    <li class="mb-2"><strong>Joint Secretaries:</strong> Dr. Chitresh Kumar, Dr. Suganaya Sekar</li>
+                                    <li class="mb-2"><strong>Executive Members:</strong> Dr. Sidhartha Chakravarthy, Dr. Gitika Nanda Singh, Dr. Chandan K Jha</li>
+                                    <li class="mb-2"><strong>Editorial Board:</strong> Vishvek Chanther, Dr. Sushobhan Pradhan, Dr. Sanjay K Yadav, Dr. Dhritiman Mehra, Dr. Sunil Barua</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row text-center justify-content-center mb-5" data-aos="fade-up">
                 <div class="col-md-3 col-6 mb-4">
                     <img src="deepti.jpg" onerror="this.src='https://via.placeholder.com/150'" class="leader-img" alt="Org Chairman">
@@ -471,7 +559,7 @@
                 <div class="col-lg-10">
                     <div class="grant-card text-center" data-aos="zoom-in">
                         <h3 class="fw-bold text-primary mb-3">Empowering the Next Generation</h3>
-                        <p class="lead">10 Travel Grants Available for Residents!</p>
+                        <p class="lead text-dark fw-bold">10 Young Researcher Traveling Fellowships Available!</p>
                         
                         <div class="row mt-4 g-3 justify-content-center">
                             <div class="col-md-4">
@@ -589,7 +677,7 @@
                                     <tr><th style="text-align:left;">Workshop Topic</th><th>Early Bird</th><th class="bg-highlight">Second Slab</th><th>Third Slab</th></tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td colspan="4" class="fw-bold bg-light text-start text-primary">Hands-On Cadaveric Workshops</td></tr>
+                                    <tr><td colspan="4" class="fw-bold bg-light text-start text-primary">Hands-On Cadaveric/Simulation Workshops</td></tr>
                                     <tr><td class="text-start">Oncoplastic + ALND</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
                                     <tr><td class="text-start">Thyroid USG & MWA</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
                                     <tr><td class="text-start">Breast USG & MWA</td><td>₹11,000</td><td class="bg-highlight">₹13,000</td><td>₹16,000</td></tr>
