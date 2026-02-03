@@ -229,6 +229,17 @@
             display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--medical-teal);
         }
 
+        /* --- Venue Section --- */
+        .venue-card {
+            border-radius: 15px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative;
+        }
+        .venue-img { width: 100%; height: 450px; object-fit: cover; }
+        .venue-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,51,102,0.95), transparent);
+            padding: 40px 30px; color: white;
+        }
+
         footer { background: var(--primary-dark); padding: 40px 0; color: rgba(255,255,255,0.8); }
     </style>
 </head>
@@ -479,7 +490,7 @@
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. V. Humbardzumyan</h6><p class="small text-muted">Armenia</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Kintu R Luwaga</h6><p class="small text-muted">Uganda</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Hendry Irawan</h6><p class="small text-muted">Indonesia</p></div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Chie Masaki</h6><p class="small text-muted">Japan</p></div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Chie Masaki</h6><p class="small text-muted">Ito Hospital, Tokyo</p></div></div>
                 <div class="col-6 col-md-3 col-lg-2"><div class="faculty-card"><div class="faculty-img-box"><i class="fas fa-user-md"></i></div><h6 class="fw-bold text-dark">Dr. Hiroko Kazusaka</h6><p class="small text-muted">Japan</p></div></div>
             </div>
         </div>
@@ -617,13 +628,24 @@
         </div>
     </section>
 
-    <section id="venue" class="section-padding">
+    <section id="venue" class="section-padding bg-light">
         <div class="container text-center" data-aos="fade-up">
             <div class="section-header"><h2>Venue</h2></div>
-            <div class="p-5 bg-white shadow-sm rounded border">
-                <i class="fas fa-map-marked-alt text-muted fa-3x mb-3"></i>
-                <h4 class="text-primary fw-bold">Venue Details Updating Soon</h4>
-                <p class="text-muted">The exact location and hotel details will be announced shortly.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="venue-card">
+                        <img src="venue.jpg.jpeg" onerror="this.src='venue.jpg'" class="venue-img" alt="Shawn Elizey - Venue">
+                        <div class="venue-overlay d-flex justify-content-between align-items-end flex-wrap">
+                            <div class="text-start">
+                                <h3 class="mb-1 fw-bold">Shawn Elizey</h3>
+                                <p class="mb-0 text-white-50">Jabalpur's Premier Convention Destination</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/Shawn+Elizey+Jabalpur" target="_blank" class="btn btn-warning fw-bold rounded-pill px-4 mt-3 mt-md-0">
+                                <i class="fas fa-location-arrow me-2"></i> View on Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -747,6 +769,9 @@
                 <img src="Jabalpur Surgeons Assocoation.JPG" alt="Logo" class="rounded-circle border border-white mb-3" width="80">
             </div>
             <p class="mb-0 opacity-75">© 2026 IAESCON. Organized by NSCBMCH, Jabalpur.</p>
+            <p class="mt-2 small opacity-50">
+                Developed by <a href="https://www.linkedin.com/in/anshuman-yadav-1608/" target="_blank" class="text-white text-decoration-none">Anshuman Yadav</a>
+            </p>
         </div>
     </footer>
 
